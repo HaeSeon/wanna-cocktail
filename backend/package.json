@@ -5,14 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon dist/app.js",
-    "start2": "nodemon src/app.ts",
+    "start": "nodemon src/app.ts",
     "compile": "tsc -w"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "argon2": "^0.27.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongodb": "^3.6.3",

@@ -1,11 +1,12 @@
 <template>
-  <div class="login">
-    <h1>Login</h1>
+  <div class="signup">
+    <h1>SignUp</h1>
     <input v-model="user.email" placeholder="E-Mail" />
+    <input v-model="user.name" placeholder="NAME" />
     <input v-model="user.password" type="password" placeholder="PASSWORD" />
-    <button @click="handleLoginButton">Login</button>
+    <button @click="handleSignUpButton">SignUp</button>
     <div v-if="error">{{ error }}</div>
-    <router-link to="/signup">SignUp</router-link>
+    <router-link to="/login">Login</router-link>
   </div>
 </template>
 
@@ -14,17 +15,18 @@ import { defineComponent } from "vue";
 import axios from "axios";
 
 export default defineComponent({
-  name: "Login",
+  name: "SignUp",
   data() {
     return {
-      user: { email: "", password: "" },
+      user: { email: "", password: "", name: "" },
       error: "",
     };
   },
   methods: {
-    async handleLoginButton() {
+    async handleSignUpButton() {
       const email = this.user.email;
       const password = this.user.password;
+      const name = this.user.name;
       try {
         if (!email) {
           throw `이메일을 입력하세요`;
@@ -32,18 +34,19 @@ export default defineComponent({
         if (!password) {
           throw `패스워드를 입력하세요`;
         }
+        if (!name) {
+          throw `이름을 입력하세요`;
+        }
         const response = await axios
-          .post<User>("/auth/login", {
+          .post<User>("/auth/signup", {
             email,
             password,
+            name,
           })
           .catch((httpError) => {
             throw httpError.response.data;
           });
         const user = response.data;
-        if (user) {
-          this.$router.replace("/");
-        }
       } catch (error) {
         this.error = error;
       }
@@ -52,7 +55,7 @@ export default defineComponent({
 });
 </script>
 <style scoped>
-.login {
+.signup {
   display: flex;
   flex-direction: column;
   margin: 100px;
