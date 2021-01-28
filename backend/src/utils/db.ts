@@ -1,6 +1,6 @@
 import mongodb from 'mongodb'
 import assert from 'assert'
-import { User } from './model/User'
+import { User } from '../model/User'
 
 const url = "mongodb://localhost:27017/wanna-cocktail-db"
 
