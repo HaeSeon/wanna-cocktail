@@ -1,10 +1,12 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
   <router-view />
 </template>
+
+<script lang="ts">
+export default {
+  components: {},
+};
+</script>
 
 <style>
 #app {
@@ -18,18 +20,7 @@ body {
   background-image: url("./assets/Picture1.png");
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+  padding: 0;
+  margin: 0;
 }
 </style>

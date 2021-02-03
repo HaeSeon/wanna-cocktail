@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <h1>Sign In</h1>
+    <h1>SignIn</h1>
     <input v-model="user.email" placeholder="E-Mail" />
     <input v-model="user.password" type="password" placeholder="PASSWORD" />
     <button @click="handleLoginButton">Login</button>
@@ -42,7 +42,7 @@ export default defineComponent({
           });
         const user = response.data;
         if (user) {
-          this.$router.replace("/");
+          this.$router.replace("/home");
         }
       } catch (error) {
         this.error = error;
